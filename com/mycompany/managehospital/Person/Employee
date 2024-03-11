@@ -1,1 +1,10 @@
 //Employee
+package com.mycompany.managehospital.Person;
+
+/**
+ *
+ * @author Admin
+ */
+public class Employee {
+    
+}
