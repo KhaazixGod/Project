@@ -1,0 +1,10 @@
+package com.mycompany.managehospital;
+import com.mycompany.managehospital.Person.Person;
+import com.mycompany.managehospital.Person.Patient;
+public class ManageHospital {
+
+    public static void main(String[] args) {
+        Patient a = new Patient("Nam","sick");
+        a.display();
+    }
+}
