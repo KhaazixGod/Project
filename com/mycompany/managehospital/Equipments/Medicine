@@ -1,1 +1,9 @@
 //medicine
+package com.mycompany.managehospital.Equipments;
+
+public class Equipments {
+    public Equipments()
+    {
+        
+    }
+}
