@@ -1,10 +1,9 @@
-//Employee
 package com.mycompany.managehospital.Person;
-
+import com.mycompany.managehospital.Person.Person;
 /**
  *
  * @author Admin
  */
-public class Employee {
+public class Employee extends Person{
     
 }
