@@ -1,13 +1,54 @@
 package com.mycompany.managehospital.Person;
 import com.mycompany.managehospital.Person.Person;
+import java.util.List;
+
 public class Patient extends Person{
-    private String aliment;
+    private String[] aliment = new String[100];
+    private int number_sick=0;
     public Patient(String name,String aliment)
     {
         super(name);
-        this.aliment = aliment;
+        int dem=1;
+        String tmp = "";
+        for(int i=0;i<aliment.length();i++)
+        {
+            if(aliment.charAt(i)==' '&&aliment.charAt(i-1)!=0)
+            {
+                this.aliment[i] = tmp;
+                tmp="";
+            }
+            else
+            {
+                tmp += aliment.charAt(i);
+            }
+        }
+        this.number_sick = dem;
+    }
+    public void addSick(String Sick)
+    {
+        String tmp = "";
+        for(int i=0;i<Sick.length();i++)
+        {
+            if(Sick.charAt(i)==' ' && Sick.charAt(i-1)!=' ')
+            {
+                this.number_sick +=1;
+                this.aliment[this.number_sick]=tmp;
+                tmp = "";
+            }
+        }
+    }
+    public String getSick()
+    {
+        String tmp = "";
+        for(int i=1;i<=this.number_sick;i++)
+        {
+            tmp+=this.aliment[i]+'\n';
+        }
+        return tmp;
     }
     public void display()
     {
         super.display();
-        System.out.println("A
+        System.out.println("Aliment: "+this.aliment);
+    }
+}
