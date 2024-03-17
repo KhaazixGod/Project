@@ -6,6 +6,8 @@ import java.util.List;
 public class Patient extends Person{
     private String[] aliment = new String[100];
     private int number_sick=0;
+    static int ID = 0;
+    private int ID_Patient ;
     public Patient()
     {
         
@@ -29,6 +31,12 @@ public class Patient extends Person{
             }
         }
         this.number_sick = dem;
+        ID++;
+        this.ID_Patient = ID ;
+    }
+    public int getID()
+    {
+        return this.ID_Patient;
     }
     public void addSick(String Sick)
     {
