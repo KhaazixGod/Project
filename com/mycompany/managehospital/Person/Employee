@@ -1,22 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.managehospital.Person;
 import com.mycompany.managehospital.Person.Person;
-/**
- *
- * @author Admin
- */
+
 public class Employee extends Person{
     private int salary;
-    public Employee(String name)
+    private String Employee_type;
+    public Employee(String name,String ty,int sal)
     {
         super(name);
+        this.Employee_type = ty;
+        this.salary = sal;
     }
     public Employee(String name,int sal)
     {
         super(name);
         this.salary = sal;
+    }
+    public void setSalary(int sal)
+    {
+        this.salary = sal;
+    }
+    public int getSalary()
+    {
+        return this.salary;
+    }
+    public void Modify_Employ_type(String ty)
+    {
+        this.Employee_type = ty;
+    }
+    public String getEmployee_Type()
+    {
+        return this.Employee_type;
     }
 }
