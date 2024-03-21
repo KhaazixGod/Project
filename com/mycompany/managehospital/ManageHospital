@@ -7,23 +7,23 @@ import java.util.Scanner;
 
 class App {
 
+    Scanner inp = new Scanner(System.in);
     Patient[] list_Patient = new Patient[100];
     static int number_Patient = 0;
     Employee[] list_Employee = new Employee[100];
     static int number_Employee = 0;
 
     public void Patient_1() {
-        Scanner inp = new Scanner(System.in);
         System.out.print("Ten benh nhan: ");
         String name = inp.nextLine();
         System.out.print("Benh: ");
         String sick = inp.nextLine();
         number_Patient++;
         this.list_Patient[number_Patient] = new Patient(name, sick);
+        Patient_MENU();
     }
 
     public void Patient_2() {
-        Scanner inp = new Scanner(System.in);
         System.out.println("Nhap ID benh nhan:");
         int ID_Patient = inp.nextInt();
         int point = -1;
@@ -37,7 +37,7 @@ class App {
         }
         if (flag == false) {
             System.out.println("ID khong hop le!");
-
+            return;
         } else {
             System.out.println("Sua ten? (Y/N)");
             String check = inp.next();
@@ -50,13 +50,79 @@ class App {
         this.Patient_MENU();
     }
 
+    public void Patient_3() {
+        System.out.println("Nhap ID benh nhan:");
+        int ID_Patient = inp.nextInt();
+        int point = -1;
+        boolean flag = false;
+        for (int i = 1; i <= this.number_Patient; i++) {
+            if (ID_Patient == list_Patient[i].getID()) {
+                flag = true;
+                point = i;
+                break;
+            }
+        }
+        if (flag == false) {
+            System.out.println("ID khong hop le!");
+        } else {
+            System.out.print("Nhap thuoc tri lieu muon them: ");
+            String list_mechanic = inp.next();
+            
+        }
+    }
+
+    public void Patient_4() {
+        System.out.println("Nhap ID benh nhan:");
+        int ID_Patient = inp.nextInt();
+        int point = -1;
+        boolean flag = false;
+        for (int i = 1; i <= this.number_Patient; i++) {
+            if (ID_Patient == list_Patient[i].getID()) {
+                flag = true;
+                point = i;
+                break;
+            }
+        }
+        if (flag == false) {
+            System.out.println("ID khong hop le!");
+        } else {
+            System.out.print("Them benh: ");
+            String inputStr = inp.next();
+            this.list_Patient[point].addSick(inputStr);
+        }
+        Patient_MENU();
+    }
+
+    public void Patient_6() {
+        System.out.println("Nhap ten benh nhan:");
+        String name_Patient = inp.next();
+        int point = -1;
+        boolean flag = false;
+        for (int i = 1; i <= this.number_Patient; i++) {
+            if (name_Patient == list_Patient[i].getName()) {
+                flag = true;
+                point = i;
+                break;
+            }
+        }
+        if (flag == false) {
+            System.out.println("Khong tim thay ten benh nhan!");
+            return;
+        } else {
+            System.out.println("Ten: " + this.list_Patient[point].getName());
+            System.out.println("Benh: \n" + this.list_Patient[point].getSick());
+        }
+        this.Patient_MENU();
+    }
+
     public void Patient_7() {
         for (int i = 1; i <= number_Patient; i++) {
             System.out.println("Ten: " + this.list_Patient[i].getName());
             System.out.println("Benh: ");
             System.out.print(this.list_Patient[i].getSick());
-            System.out.println("");
+            System.out.println(this.list_Patient[i].getMechanic() + '\n');
         }
+        this.Patient_MENU();
     }
 
     public void Patient_MENU() {
@@ -67,7 +133,6 @@ class App {
         System.out.println("5. Xoa thong tin benh nhan");
         System.out.println("6. Tim kiem benh nhan theo ten");
         System.out.println("7. Danh sach benh nhan");
-        Scanner inp = new Scanner(System.in);
         System.out.print("Choice: ");
         int input = inp.nextInt();
         if (input == 0) {
@@ -77,6 +142,12 @@ class App {
             Patient_1();
         } else if (input == 2) {
             Patient_2();
+        } else if (input == 3) {
+            Patient_3();
+        } else if (input == 4) {
+            Patient_4();
+        } else if (input == 6) {
+            Patient_6();
         } else if (input == 7) {
             Patient_7();
         }
@@ -89,16 +160,14 @@ class App {
         System.out.println("3. Xoa thong tin nhan vien");
         System.out.println("4. Tim kiem nhan vien theo ten");
         System.out.print("Choice: ");
-        Scanner inp = new Scanner(System.in);
         int input = inp.nextInt();
         if (input == 0) {
-            return;
+
         }
         this.MAIN_MENU();
     }
 
     public void MAIN_MENU() {
-        Scanner inp = new Scanner(System.in);
         System.out.println("Main menu");
         System.out.println("1. Nhan Vien");
         System.out.println("2. Benh nhan");
@@ -110,12 +179,12 @@ class App {
         } else if (input == 2) {
             this.Patient_MENU();
         } else if (input == 0) {
-            return;
+            System.exit(0);
         }
     }
 }
 
-public class ManageHospital {
+public class Managehospital {
 
     public static void main(String[] args) {
         App a = new App();
