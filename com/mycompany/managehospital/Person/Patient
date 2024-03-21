@@ -8,6 +8,8 @@ public class Patient extends Person{
     private int number_sick=0;
     static int ID = 0;
     private int ID_Patient ;
+    private String[] mechanic = new String[100]; 
+    private int number_medicine = 0;
     public Patient()
     {
         
@@ -34,9 +36,64 @@ public class Patient extends Person{
         ID++;
         this.ID_Patient = ID ;
     }
+    public Patient(String name,String aliment,String mecha)
+    {
+        super(name);
+        int dem=0;
+        String tmp = "";
+        for(int i=0;i<aliment.length();i++)
+        {
+            if(aliment.charAt(i)!=' ')
+            {
+                tmp += aliment.charAt(i);
+            }
+            if((aliment.charAt(i)==' '||i==aliment.length()-1))
+            {
+                dem++;
+                this.aliment[dem] = tmp;
+                tmp="";
+            }
+        }
+        this.number_sick = dem;
+        dem = 0;
+        tmp = "";
+        for(int i=0;i<mecha.length();i++)
+        {
+            if(mecha.charAt(i)!=' ')
+            {
+                tmp+=mecha.charAt(i);
+            }
+            if(mecha.charAt(i)==' ' || i == mecha.length()-1)
+            {
+                dem++;
+                this.mechanic[dem] = tmp;
+                tmp = "";
+            }
+        }
+        this.number_medicine = dem;
+        ID++;
+        this.ID_Patient = ID ;
+    }
     public int getID()
     {
         return this.ID_Patient;
+    }
+    public void addMechanic(String medicine)
+    {
+        String tmp = "";
+        for(int i=0;i<medicine.length();i++)
+        {
+            if (medicine.charAt(i)!=' ')
+            {
+                tmp+=medicine.charAt(i);
+            }
+            if((medicine.charAt(i)==' ' && medicine.charAt(i-1)!=' ') ||i==medicine.length()-1)
+            {
+                this.number_medicine +=1;
+                this.aliment[this.number_medicine]=tmp;
+                tmp = "";
+            }
+        }
     }
     public void addSick(String Sick)
     {
@@ -61,6 +118,15 @@ public class Patient extends Person{
         for(int i=1;i<=this.number_sick;i++)
         {
             tmp+=this.aliment[i]+'\n';
+        }
+        return tmp;
+    }
+    public String getMechanic()
+    {
+        String tmp = "";
+        for(int i=1;i<=this.number_medicine;i++)
+        {
+            tmp+=this.mechanic[i]+'\n';
         }
         return tmp;
     }
