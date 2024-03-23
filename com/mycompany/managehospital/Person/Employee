@@ -4,15 +4,11 @@ import com.mycompany.managehospital.Person.Person;
 public class Employee extends Person{
     private int salary;
     private String Employee_type;
-    public Employee(String name,String ty,int sal)
+    static int ID = 0;
+    public Employee(String name,int age,String ty,int sal)
     {
-        super(name);
+        super(name,age);
         this.Employee_type = ty;
-        this.salary = sal;
-    }
-    public Employee(String name,int sal)
-    {
-        super(name);
         this.salary = sal;
     }
     public void setSalary(int sal)
