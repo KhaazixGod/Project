@@ -14,9 +14,9 @@ public class Patient extends Person{
     {
         
     }
-    public Patient(String name,String aliment)
+    public Patient(String name,int age,String aliment)
     {
-        super(name);
+        super(name,age);
         int dem=0;
         String tmp = "";
         for(int i=0;i<aliment.length();i++)
@@ -36,9 +36,9 @@ public class Patient extends Person{
         ID++;
         this.ID_Patient = ID ;
     }
-    public Patient(String name,String aliment,String mecha)
+    public Patient(String name,int age,String aliment,String mecha)
     {
-        super(name);
+        super(name,age);
         int dem=0;
         String tmp = "";
         for(int i=0;i<aliment.length();i++)
