@@ -19,7 +19,7 @@ class App {
         System.out.print("Benh: ");
         String sick = inp.nextLine();
         number_Patient++;
-        this.list_Patient[number_Patient] = new Patient(name, sick);
+        this.list_Patient[number_Patient] = new Patient(name,0,sick);
         Patient_MENU();
     }
 
@@ -37,15 +37,22 @@ class App {
         }
         if (flag == false) {
             System.out.println("ID khong hop le!");
-            return;
         } else {
             System.out.println("Sua ten? (Y/N)");
             String check = inp.next();
             if (check == "Y" || check == "Yes") {
-                String name = inp.next();
+                System.out.print("Ten thay the: ");
+                String name = inp.nextLine();
                 list_Patient[point].setName(name);
             }
-            System.out.println("Sua ");
+            System.out.println("Sua tuoi? (Y/N)");
+            check = inp.next();
+            if(check=="Y"||check=="Yes")
+            {
+                System.out.print("Tuoi thay the: ");
+                int age = inp.nextInt();
+                list_Patient[point].setAge(age);
+            }
         }
         this.Patient_MENU();
     }
@@ -127,7 +134,7 @@ class App {
 
     public void Patient_MENU() {
         System.out.println("1. Them benh nhan");
-        System.out.println("2. Sua thong tin benh nhan");
+        System.out.println("2. Sua thong tin benh nhan theo ID");
         System.out.println("3. Them thuoc vao qua trinh tri lieu");
         System.out.println("4. Them benh vao ho so");
         System.out.println("5. Xoa thong tin benh nhan");
@@ -153,10 +160,28 @@ class App {
         }
         this.MAIN_MENU();
     }
-
+    public void Employee_1()
+    {
+        System.out.print("Ten nhan vien: ");
+        String name = inp.nextLine();
+        System.out.print("Tuoi: ");
+        int age = inp.nextInt();
+        System.out.print("Luong: ");
+        int salary = inp.nextInt();
+        System.out.print("Chuc vu: ");
+        String type = inp.nextLine();
+        number_Employee++;
+        this.list_Employee[number_Employee] = new Employee(name,age,type,salary);
+        Patient_MENU();
+    }
+    public void Employee_2()
+    {
+        System.out.print("Nhap ID nhan vien muon sua: ");
+        
+    }
     public void Employee_MENU() {
         System.out.println("1. Them nhan vien");
-        System.out.println("2. Sua thong tin nha vien");
+        System.out.println("2. Sua thong tin nha vien theo ID");
         System.out.println("3. Xoa thong tin nhan vien");
         System.out.println("4. Tim kiem nhan vien theo ten");
         System.out.print("Choice: ");
@@ -184,7 +209,7 @@ class App {
     }
 }
 
-public class Managehospital {
+public class ManageHospital {
 
     public static void main(String[] args) {
         App a = new App();
