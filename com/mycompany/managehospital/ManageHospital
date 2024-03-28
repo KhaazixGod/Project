@@ -14,18 +14,22 @@ class App {
     static int number_Employee = 0;
 
     public void Patient_1() {
-        System.out.print("Ten benh nhan: ");
+        Scanner inp = new Scanner(System.in);
+        System.out.println("ID benh nhan: ");
+        String ID = inp.nextLine();
+        System.out.println("Ten benh nhan: ");
         String name = inp.nextLine();
+        System.out.print(name);
         System.out.print("Benh: ");
         String sick = inp.nextLine();
         number_Patient++;
-        this.list_Patient[number_Patient] = new Patient(name,0,sick);
+        this.list_Patient[number_Patient] = new Patient(name,ID,0,sick);
         Patient_MENU();
     }
 
     public void Patient_2() {
         System.out.println("Nhap ID benh nhan:");
-        int ID_Patient = inp.nextInt();
+        String ID_Patient = inp.next();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
@@ -59,7 +63,7 @@ class App {
 
     public void Patient_3() {
         System.out.println("Nhap ID benh nhan:");
-        int ID_Patient = inp.nextInt();
+        String ID_Patient = inp.next();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
@@ -80,7 +84,7 @@ class App {
 
     public void Patient_4() {
         System.out.println("Nhap ID benh nhan:");
-        int ID_Patient = inp.nextInt();
+        String ID_Patient = inp.next();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
@@ -100,38 +104,43 @@ class App {
         Patient_MENU();
     }
 
+    public void Patient_5()
+    {
+        
+    }
+    
     public void Patient_6() {
         System.out.println("Nhap ten benh nhan:");
-        String name_Patient = inp.next();
-        int point = -1;
-        boolean flag = false;
+        String name_Patient = inp.nextLine();
+        int position = -1;
+        boolean isExist = false;
         for (int i = 1; i <= this.number_Patient; i++) {
-            if (name_Patient == list_Patient[i].getName()) {
-                flag = true;
-                point = i;
+            System.out.print(this.list_Patient[i].getName());
+            if (name_Patient == this.list_Patient[i].getName()) {
+                isExist = true;
+                position = i;
                 break;
             }
         }
-        if (flag == false) {
+        if (isExist == false) {
             System.out.println("Khong tim thay ten benh nhan!");
-            return;
         } else {
-            System.out.println("Ten: " + this.list_Patient[point].getName());
-            System.out.println("Benh: \n" + this.list_Patient[point].getSick());
+            System.out.println("Ten: " + this.list_Patient[position].getName());
+            System.out.println("Benh: \n" + this.list_Patient[position].getSick());
         }
         this.Patient_MENU();
     }
-
+    
     public void Patient_7() {
         for (int i = 1; i <= number_Patient; i++) {
             System.out.println("Ten: " + this.list_Patient[i].getName());
             System.out.println("Benh: ");
             System.out.print(this.list_Patient[i].getSick());
-            System.out.println(this.list_Patient[i].getMechanic() + '\n');
+            System.out.println(this.list_Patient[i].getMechanic() );
         }
         this.Patient_MENU();
     }
-
+    
     public void Patient_MENU() {
         System.out.println("1. Them benh nhan");
         System.out.println("2. Sua thong tin benh nhan theo ID");
@@ -142,6 +151,7 @@ class App {
         System.out.println("7. Danh sach benh nhan");
         System.out.print("Choice: ");
         int input = inp.nextInt();
+        String space = inp.nextLine();
         if (input == 0) {
             return;
         }
@@ -162,6 +172,8 @@ class App {
     }
     public void Employee_1()
     {
+        System.out.print("ID nhan vien: ");
+        String ID = inp.next();
         System.out.print("Ten nhan vien: ");
         String name = inp.nextLine();
         System.out.print("Tuoi: ");
@@ -171,14 +183,82 @@ class App {
         System.out.print("Chuc vu: ");
         String type = inp.nextLine();
         number_Employee++;
-        this.list_Employee[number_Employee] = new Employee(name,age,type,salary);
+        this.list_Employee[number_Employee] = new Employee(name,ID,age,type,salary);
         Patient_MENU();
     }
+    
     public void Employee_2()
     {
         System.out.print("Nhap ID nhan vien muon sua: ");
-        
+        String input = inp.nextLine();
+        boolean isExist = false;
+        int position = -1;
+        for(int i=1;i<=number_Employee;i++)
+        {
+            if(input == this.list_Employee[i].getID())
+            {
+                isExist = true;
+                position = i;
+                break;
+            }
+        }
+        if(isExist)
+        {
+            System.out.println("Sua ten? (Y/N)");
+            String check = inp.next();
+            if (check == "Y" || check == "Yes") {
+                System.out.print("Ten thay the: ");
+                String name = inp.nextLine();
+                this.list_Employee[position].setName(name);
+            }
+            System.out.println("Sua tuoi? (Y/N)");
+            check = inp.nextLine();
+            if(check=="Y"||check=="Yes")
+            {
+                System.out.print("Tuoi thay the: ");
+                int age = inp.nextInt();
+                this.list_Employee[position].setAge(age);
+            }
+            System.out.println("Sua chuc vu (Y/N)");
+            check = inp.nextLine();
+            if(check=="Y"||check=="Yes")
+            {
+                System.out.print("Chuc vu thay the: ");
+                String type = inp.nextLine();
+                this.list_Employee[position].setPosition(type);
+            }
+        }
     }
+    
+    public void Employee_4()
+    {
+        System.out.print("Nhap ten nhan vien muon tim kiem: ");
+        boolean isExist = false;
+        int position = -1;
+        String name = inp.nextLine();
+        for(int i=1;i<=number_Employee;i++)
+        {
+            if(name == this.list_Employee[i].getName())
+            {
+                isExist = true;
+                position = i;
+                break;
+            }
+        }
+        if(isExist)
+        {
+            System.out.println("Name: "+this.list_Employee[position].getName());
+            System.out.println("Age: "+this.list_Employee[position].getAge());
+            System.out.println("Position: "+this.list_Employee[position].getPosition());
+            System.out.println("Salary: "+this.list_Employee[position].getSalary());
+        }
+        else
+        {
+            System.out.println("Can find employee have that name!");
+        }
+        Employee_MENU();
+    }
+    
     public void Employee_MENU() {
         System.out.println("1. Them nhan vien");
         System.out.println("2. Sua thong tin nha vien theo ID");
@@ -187,7 +267,7 @@ class App {
         System.out.print("Choice: ");
         int input = inp.nextInt();
         if (input == 0) {
-
+               
         }
         this.MAIN_MENU();
     }
@@ -209,7 +289,7 @@ class App {
     }
 }
 
-public class ManageHospital {
+public class Managehospital {
 
     public static void main(String[] args) {
         App a = new App();
