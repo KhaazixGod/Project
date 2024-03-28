@@ -4,12 +4,17 @@ import com.mycompany.managehospital.Person.Person;
 public class Employee extends Person{
     private int salary;
     private String Employee_type;
-    static int ID = 0;
-    public Employee(String name,int age,String ty,int sal)
+    private String ID_Employee ;
+    public Employee(String name,String ID,int age,String ty,int sal)
     {
         super(name,age);
         this.Employee_type = ty;
         this.salary = sal;
+        this.ID_Employee = ID;
+    }
+    public String getID()
+    {
+        return this.ID_Employee;
     }
     public void setSalary(int sal)
     {
@@ -23,8 +28,12 @@ public class Employee extends Person{
     {
         this.Employee_type = ty;
     }
-    public String getEmployee_Type()
+    public String getPosition()
     {
         return this.Employee_type;
+    }
+    public void setPosition(String position)
+    {
+        this.Employee_type = position;
     }
 }
