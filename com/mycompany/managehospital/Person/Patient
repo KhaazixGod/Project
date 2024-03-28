@@ -6,15 +6,14 @@ import java.util.List;
 public class Patient extends Person{
     private String[] aliment = new String[100];
     private int number_sick=0;
-    static int ID = 0;
-    private int ID_Patient ;
+    private String ID_Patient ;
     private String[] mechanic = new String[100]; 
     private int number_medicine = 0;
     public Patient()
     {
         
     }
-    public Patient(String name,int age,String aliment)
+    public Patient(String name,String ID,int age,String aliment)
     {
         super(name,age);
         int dem=0;
@@ -33,10 +32,9 @@ public class Patient extends Person{
             }
         }
         this.number_sick = dem;
-        ID++;
         this.ID_Patient = ID ;
     }
-    public Patient(String name,int age,String aliment,String mecha)
+    public Patient(String name,String ID,int age,String aliment,String mecha)
     {
         super(name,age);
         int dem=0;
@@ -71,10 +69,9 @@ public class Patient extends Person{
             }
         }
         this.number_medicine = dem;
-        ID++;
         this.ID_Patient = ID ;
     }
-    public int getID()
+    public String getID()
     {
         return this.ID_Patient;
     }
@@ -114,21 +111,21 @@ public class Patient extends Person{
     }
     public String getSick()
     {
-        String tmp = "";
+        String Sick = "";
         for(int i=1;i<=this.number_sick;i++)
         {
-            tmp+=this.aliment[i]+'\n';
+            Sick+=this.aliment[i]+'\n';
         }
-        return tmp;
+        return Sick;
     }
     public String getMechanic()
     {
-        String tmp = "";
+        String Medicine = "";
         for(int i=1;i<=this.number_medicine;i++)
         {
-            tmp+=this.mechanic[i]+'\n';
+            Medicine+=this.mechanic[i]+'\n';
         }
-        return tmp;
+        return Medicine;
     }
     public void display()
     {
