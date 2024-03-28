@@ -29,11 +29,11 @@ class App {
 
     public void Patient_2() {
         System.out.println("Nhap ID benh nhan:");
-        String ID_Patient = inp.next();
+        String ID_Patient = inp.nextLine();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
-            if (ID_Patient == list_Patient[i].getID()) {
+            if (ID_Patient.equals(list_Patient[i].getID())) {
                 flag = true;
                 point = i;
                 break;
@@ -63,11 +63,11 @@ class App {
 
     public void Patient_3() {
         System.out.println("Nhap ID benh nhan:");
-        String ID_Patient = inp.next();
+        String ID_Patient = inp.nextLine();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
-            if (ID_Patient == list_Patient[i].getID()) {
+            if (ID_Patient.equals(list_Patient[i].getID())) {
                 flag = true;
                 point = i;
                 break;
@@ -77,18 +77,18 @@ class App {
             System.out.println("ID khong hop le!");
         } else {
             System.out.print("Nhap thuoc tri lieu muon them: ");
-            String list_mechanic = inp.next();
-            
+            String list_mechanic = inp.nextLine();
+            this.list_Patient[point].addMechanic(list_mechanic);
         }
     }
 
     public void Patient_4() {
         System.out.println("Nhap ID benh nhan:");
-        String ID_Patient = inp.next();
+        String ID_Patient = inp.nextLine();
         int point = -1;
         boolean flag = false;
         for (int i = 1; i <= this.number_Patient; i++) {
-            if (ID_Patient == list_Patient[i].getID()) {
+            if (ID_Patient.endsWith( list_Patient[i].getID())) {
                 flag = true;
                 point = i;
                 break;
@@ -98,7 +98,7 @@ class App {
             System.out.println("ID khong hop le!");
         } else {
             System.out.print("Them benh: ");
-            String inputStr = inp.next();
+            String inputStr = inp.nextLine();
             this.list_Patient[point].addSick(inputStr);
         }
         Patient_MENU();
@@ -116,7 +116,7 @@ class App {
         boolean isExist = false;
         for (int i = 1; i <= this.number_Patient; i++) {
             System.out.print(this.list_Patient[i].getName());
-            if (name_Patient == this.list_Patient[i].getName()) {
+            if (name_Patient.equals(this.list_Patient[i].getName())) {
                 isExist = true;
                 position = i;
                 break;
@@ -195,7 +195,7 @@ class App {
         int position = -1;
         for(int i=1;i<=number_Employee;i++)
         {
-            if(input == this.list_Employee[i].getID())
+            if(input.equals(this.list_Employee[i].getID()))
             {
                 isExist = true;
                 position = i;
@@ -238,7 +238,7 @@ class App {
         String name = inp.nextLine();
         for(int i=1;i<=number_Employee;i++)
         {
-            if(name == this.list_Employee[i].getName())
+            if(name.equals(this.list_Employee[i].getName()))
             {
                 isExist = true;
                 position = i;
@@ -289,7 +289,7 @@ class App {
     }
 }
 
-public class Managehospital {
+public class ManageHospital {
 
     public static void main(String[] args) {
         App a = new App();
