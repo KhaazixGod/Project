@@ -4,13 +4,10 @@
  */
 package javaapplication1;
 
-/**
- *
- * @author admin
- */
+
 public class JavaApplication1 {
     public static void main(String[] args) {
-        
+        System.out.print("");
     }
     
 }
